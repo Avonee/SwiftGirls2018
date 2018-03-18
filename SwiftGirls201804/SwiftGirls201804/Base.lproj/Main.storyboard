@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,107 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SwiftGirls201804" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="j5N-EZ-y4R">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="30" minimumInteritemSpacing="20" id="Rap-we-EQn">
+                                    <size key="itemSize" width="150" height="150"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="shakingAreaCell" id="MQA-Ag-n1N" customClass="ShakingAreaCell" customModule="SwiftGirls201804" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="70" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="areaName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DEK-et-c6q">
+                                                    <rect key="frame" x="0.0" y="10" width="150" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4D-xx-gwU">
+                                                    <rect key="frame" x="61" y="63" width="28" height="58.5"/>
+                                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="50"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="級" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzT-V6-giq">
+                                                    <rect key="frame" x="129.5" y="97.5" width="20.5" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="J4D-xx-gwU" firstAttribute="top" secondItem="DEK-et-c6q" secondAttribute="bottom" constant="10" id="4kt-6F-yWB"/>
+                                            <constraint firstItem="FzT-V6-giq" firstAttribute="trailing" secondItem="DEK-et-c6q" secondAttribute="trailing" id="6Br-a4-dMM"/>
+                                            <constraint firstItem="DEK-et-c6q" firstAttribute="width" secondItem="MQA-Ag-n1N" secondAttribute="width" id="8EH-dG-Yg4"/>
+                                            <constraint firstItem="DEK-et-c6q" firstAttribute="centerX" secondItem="MQA-Ag-n1N" secondAttribute="centerX" id="9WN-2Z-9LE"/>
+                                            <constraint firstItem="FzT-V6-giq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MQA-Ag-n1N" secondAttribute="leading" symbolic="YES" id="CtT-le-nC2"/>
+                                            <constraint firstItem="J4D-xx-gwU" firstAttribute="centerX" secondItem="MQA-Ag-n1N" secondAttribute="centerX" id="EyV-kO-1gc"/>
+                                            <constraint firstItem="DEK-et-c6q" firstAttribute="top" secondItem="MQA-Ag-n1N" secondAttribute="top" constant="10" id="NT2-Sq-CCf"/>
+                                            <constraint firstItem="FzT-V6-giq" firstAttribute="bottom" secondItem="J4D-xx-gwU" secondAttribute="bottom" id="dTu-wX-1Q3"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="areaName" destination="DEK-et-c6q" id="6J8-hx-lac"/>
+                                            <outlet property="text" destination="J4D-xx-gwU" id="t5g-AT-1RR"/>
+                                            <outlet property="unit" destination="FzT-V6-giq" id="2WX-UW-gWa"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="earthquakeHeaderView" id="3zb-Gx-edp" customClass="EarthquakeHeaderView" customModule="SwiftGirls201804" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWC-mY-rWU">
+                                            <rect key="frame" x="-0.5" y="15" width="375" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="LWC-mY-rWU" firstAttribute="width" secondItem="3zb-Gx-edp" secondAttribute="width" id="b1D-BC-EZP"/>
+                                        <constraint firstItem="LWC-mY-rWU" firstAttribute="centerX" secondItem="3zb-Gx-edp" secondAttribute="centerX" id="eGC-bb-Vub"/>
+                                        <constraint firstItem="LWC-mY-rWU" firstAttribute="centerY" secondItem="3zb-Gx-edp" secondAttribute="centerY" id="kag-7X-E4Y"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="reportContent" destination="LWC-mY-rWU" id="e2a-MR-OL7"/>
+                                    </connections>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="bEY-Er-Wt3"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="1dR-NJ-pR4"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="j5N-EZ-y4R" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="4ks-N3-GjV"/>
+                            <constraint firstItem="j5N-EZ-y4R" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" id="KPy-aP-C9W"/>
+                            <constraint firstItem="j5N-EZ-y4R" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YSz-3T-8Ma"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="j5N-EZ-y4R" secondAttribute="leading" id="eTm-eW-BwB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="j5N-EZ-y4R" id="TWD-fD-FoD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="32.833583208395808"/>
         </scene>
     </scenes>
 </document>
