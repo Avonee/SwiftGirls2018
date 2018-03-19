@@ -19,6 +19,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DataApi.getData { (earthquake, error) in
+            guard error == nil && earthquake != nil else {
+                return
+            }
+            // 取得資料了
+        }
         
         //Use FakeData.
         earthquake = FakeData.fakeEarthquake
