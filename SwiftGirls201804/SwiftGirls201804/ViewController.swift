@@ -20,6 +20,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var shakingArea: [ShakingArea] = []
 //    var shakingArea: [[String: Any]] = [[:]]
     
+    //分區震度內各測站
+    var eqStation: [EqStation] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         DataApi.getData { (earthquake, error) in
@@ -75,6 +78,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     /** UICollectionViewDelegate */
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("selected \(indexPath.row)")
+        let area = shakingArea[indexPath.row]
+        self.eqStation = area.stationsArray
         performSegue(withIdentifier: "toMapView", sender: self)
     }
     
@@ -84,7 +89,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMapView"{
-            let vc = segue.destination as! MapView
+            let navigationController = segue.destination as! UINavigationController
+            let vc = navigationController.viewControllers.first as! MapView
+//            let vc = segue.destination as! MapView
+            vc.eqStationGet = self.eqStation
             print("push to MapView")
         }
     }

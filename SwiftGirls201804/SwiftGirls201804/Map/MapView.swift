@@ -14,11 +14,14 @@ class MapView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    //台北火車站
+    // 拿到此地區的所以觀測站
+    var eqStationGet: [EqStation] = []
+    
+    // 範例：台北火車站
     let location1 = CLLocation(latitude: 25.0477435, longitude: 121.5148509)
-    //台北101/世貿站
+    // 範例：台北101/世貿站
     let location2 = CLLocation(latitude: 25.033053, longitude: 121.563192)
-    //台北101大樓的四點
+    // 範例：台北101大樓的四點
     let point1 = CLLocationCoordinate2D(latitude: 25.032914, longitude: 121.563411)
     let point2 = CLLocationCoordinate2D(latitude: 25.034965, longitude: 121.563550)
     let point3 = CLLocationCoordinate2D(latitude: 25.034955, longitude: 121.565395)
@@ -30,30 +33,30 @@ class MapView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         mapView.delegate = self
-        centerMap(coordinate: location1.coordinate)
+//        centerMap(coordinate: location1.coordinate)
         
         mapView.showsUserLocation = true
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
-        //標記預設大頭針
+        // 標記預設大頭針
         let annotation = MKPointAnnotation()
         annotation.coordinate = location1.coordinate
         annotation.title = "台北火車站"
         annotation.subtitle = "集合地點"
         mapView.addAnnotation(annotation)
         
-        //標記自訂大頭針
+        // 標記自訂大頭針
         let myAnnotation = AnnotationBlue(title: "台北101/世貿站", subtitle: "捷運", coordinate: location2.coordinate)
         mapView.addAnnotation(myAnnotation)
         
-        //標記區塊
+        // 標記區塊
         let points = [point1, point2, point3, point4]
         let polygon = MKPolygon(coordinates: points, count: points.count)
         mapView.add(polygon)
         
-        //取得使用定位權限
+        // 取得使用定位權限
         switch CLLocationManager.authorizationStatus() {
         case .denied, .restricted:
             print("App不允許使用定位服務")
@@ -64,6 +67,14 @@ class MapView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization()
         default: break
         }
+
+        // 拿此地區觀測站所有資料
+        for i in 0...eqStationGet.count-1{
+        self.displayContent(with: eqStationGet[i])
+        }
+        
+        self.displayContentCenter(with: eqStationGet[0])
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -71,7 +82,22 @@ class MapView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    //定位
+    // 各測站詳細資料
+    func displayContent(with station : EqStation) {
+        let stationAnnotation = AnnotationRed(title: "\(station.stationName)", subtitle: "\(station.stationIntensity)級", coordinate: CLLocationCoordinate2D(latitude: Double(station.stationLat), longitude: Double(station.stationLon)))
+        mapView.addAnnotation(stationAnnotation)
+    }
+    
+    func displayContentCenter(with station : EqStation) {
+        centerMap(coordinate: CLLocationCoordinate2D(latitude: Double(station.stationLat), longitude: Double(station.stationLon)))
+    }
+    
+    @IBAction func exitButtonClick(sender: UIBarButtonItem){
+        navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    // 定位
     @IBAction func getUserLocation(_ sender: Any) {
         guard CLLocationManager.locationServicesEnabled() else {
             print("裝置無定位服務")
@@ -89,7 +115,7 @@ class MapView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
     }
     
-    //開啟內建地圖App
+    // 開啟內建地圖App
     @IBAction func openMapApp(_ sender: Any) {
         //使用Map Link
         //        let link = "http://maps.apple.com/ll=\(location1.coordinate.latitude),\(location1.coordinate.longitude)&daddr=\(location1.coordinate.latitude),\(location1.coordinate.longitude)&dirflg=d"
@@ -105,7 +131,7 @@ class MapView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
     }
     
-    //MARK: MKMapViewDelegate
+    // MARK: MKMapViewDelegate
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
@@ -127,7 +153,7 @@ class MapView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         myView.canShowCallout = true
         myView.annotation = myAnnotation
         
-        //自定CalloutAccessoryView
+        // 自定CalloutAccessoryView
         let detail = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
         detail.text = myAnnotation.subtitle ?? ""
         detail.numberOfLines = 0
@@ -153,7 +179,7 @@ class MapView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         return MKOverlayRenderer()
     }
     
-    //MARK: CLLocationManagerDelegate
+    // MARK: CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
@@ -167,10 +193,12 @@ class MapView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         print(error)
     }
     
-    //以給定的經緯度為中心顯示該範圍內地圖
+    // 以給定的經緯度為中心顯示該範圍內地圖
     func centerMap(coordinate: CLLocationCoordinate2D) {
-        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-        let region = MKCoordinateRegionMake(coordinate, span)
+//        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005) // 越小越精確
+         let span = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0)
+//        let region = MKCoordinateRegionMake(coordinate, span)
+        let region = MKCoordinateRegion(center:coordinate, span:span)
         mapView.setRegion(region, animated: true)
     }
     

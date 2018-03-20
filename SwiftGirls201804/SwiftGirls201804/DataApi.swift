@@ -110,18 +110,14 @@ class DataApi: NSObject, XMLParserDelegate {
         
         else if elementName == "stationName" {
             eqStation?.stationName += string
-//            print("eqStation?.stationName:::\(eqStation?.stationName)")
         } else if elementName == "stationLon" {
             eqStation?.stationLon = Float(string) ?? 0.0
-//            print("eqStation?.stationLon:::\(eqStation?.stationLon)")
         } else if elementName == "stationLat" {
             eqStation?.stationLat = Float(string) ?? 0.0
-//            print("eqStation?.stationLat:::\(eqStation?.stationLat)")
         } else if elementName == "distance" {
             eqStation?.distance = Float(string) ?? 0.0
         } else if elementName == "stationIntensity" {
             eqStation?.stationIntensity = Int(string) ?? 0
-//            print("eqStation?.stationIntensity:::\(eqStation?.stationIntensity)")
         }
         
         
@@ -132,16 +128,8 @@ class DataApi: NSObject, XMLParserDelegate {
         if elementName == "shakingArea" && shakingArea != nil {
             shakingArea?.stationsArray = stationsArray
             DataApi.earthquake?.intensityArray?.append(shakingArea!)
-//            print("shakingArea是：：：\(shakingArea)")
-            // Optional(<SwiftGirls201804.ShakingArea: 0x6000002837a0>)
-//            print("stationsArray在shakingArea?.stationsArray是：：：\(stationsArray)")
-            // [<SwiftGirls201804.EqStation: 0x600000675980>, <SwiftGirls201804.EqStation: 0x600000479ec0>, <SwiftGirls201804.EqStation: 0x600000676500>, <SwiftGirls201804.EqStation: 0x60000047af00>, <SwiftGirls201804.EqStation: 0x60000047a0c0>, <SwiftGirls201804.EqStation: 0x600000678540>, <SwiftGirls201804.EqStation: 0x60400046db00>]
-//            print("DataApi.earthquake?.intensityArray?是：：：\(DataApi.earthquake!.intensityArray!)")
-            // [<SwiftGirls201804.ShakingArea: 0x6000002837a0>]
         } else if elementName == "eqStation" && eqStation != nil {
             stationsArray.append(eqStation!)
-//            print("stationsArray是：：：\(stationsArray)")
-            // [<SwiftGirls201804.EqStation: 0x600000675980>, <SwiftGirls201804.EqStation: 0x600000479ec0>, <SwiftGirls201804.EqStation: 0x600000676500>, <SwiftGirls201804.EqStation: 0x60000047af00>, <SwiftGirls201804.EqStation: 0x60000047a0c0>, <SwiftGirls201804.EqStation: 0x600000678540>, <SwiftGirls201804.EqStation: 0x60400046db00>, <SwiftGirls201804.EqStation: 0x60400046d8c0>, <SwiftGirls201804.EqStation: 0x60400046da80>]
         }
     }
 }
