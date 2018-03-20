@@ -13,28 +13,35 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var collectionView: UICollectionView!
     
     //地震資料
-    var earthquake: [String: Any] = [:]
+    var earthquake: Earthquake = Earthquake()
+//    var earthquake: [String: Any] = [:]
+    
     //分區震度
-    var shakingArea: [[String: Any]] = [[:]]
+    var shakingArea: [ShakingArea] = []
+//    var shakingArea: [[String: Any]] = [[:]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         DataApi.getData { (earthquake, error) in
-            guard error == nil && earthquake != nil else {
+            guard error == nil, let earthquake = earthquake else {
                 return
             }
             // 取得資料了
-            print("有取得資料\(earthquake)")
-            // Optional(<SwiftGirls201804.Earthquake: 0x60000011d640>)
-
-            
+            print("earthqauke.reportContent:\(earthquake.reportContent)...")
+            self.earthquake = earthquake
+            if let shakingAreas = earthquake.intensityArray {
+                self.shakingArea = shakingAreas
+            }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
-        
-        //Use FakeData.
-        earthquake = FakeData.fakeEarthquake
-        if let intensity = earthquake["intensity"] as? [String: Any], let shakingAreas = intensity["shakingArea"] as? [[String: Any]] {
-            shakingArea = shakingAreas
-        }
+        print("earthqaukeno:\(earthquake.reportContent)...")
+//        //Use FakeData.
+//        earthquake = FakeData.fakeEarthquake
+//        if let intensity = earthquake["intensity"] as? [String: Any], let shakingAreas = intensity["shakingArea"] as? [[String: Any]] {
+//            shakingArea = shakingAreas
+//        }
         
         //Set CollectionView Datasource and Delegate
         collectionView.dataSource = self

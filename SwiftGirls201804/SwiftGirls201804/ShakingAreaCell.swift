@@ -18,9 +18,14 @@ class ShakingAreaCell: UICollectionViewCell {
 
     override var isSelected: Bool {
         didSet {
-            print("set isSelected")
             self.backgroundColor = self.isSelected ?  UIColor.yellow : UIColor.white
         }
+    }
+    
+    func displayContent(with area : ShakingArea) {
+        self.areaName.text = area.areaName
+        self.text.text = "\(area.areaIntensity)"
+        self.unit.text = "級"
     }
     
     func displayContent(with area : [String: Any]) {

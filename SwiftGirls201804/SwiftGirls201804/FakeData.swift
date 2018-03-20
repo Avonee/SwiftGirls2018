@@ -10,8 +10,7 @@ import UIKit
 
 class FakeData: NSObject {
     static let fakeEarthquake: [String : Any] = [
-        "reportContent": "03/06-17:42宜蘭縣",
-//        "reportContent": "03/06-17:42宜蘭縣近海發生規模4.8有感地震，最大震度宜蘭縣南澳3級。",
+        "reportContent": "03/06-17:42宜蘭縣近海發生規模4.8有感地震，最大震度宜蘭縣南澳3級。",
         "reportColor": "綠色",
         "reportRemark": "本報告係中央氣象局地震觀測網即時地震資料地震速報之結果。",
         "intensity": [
