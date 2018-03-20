@@ -24,6 +24,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 return
             }
             // 取得資料了
+            print("有取得資料\(earthquake)")
+            // Optional(<SwiftGirls201804.Earthquake: 0x60000011d640>)
+
+            
         }
         
         //Use FakeData.
@@ -64,10 +68,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     /** UICollectionViewDelegate */
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("selected \(indexPath.row)")
+        performSegue(withIdentifier: "toMapView", sender: self)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         print("Deselected \(indexPath.row)")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMapView"{
+            let vc = segue.destination as! MapView
+            print("push to MapView")
+        }
     }
 }
 

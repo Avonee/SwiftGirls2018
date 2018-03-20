@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="73E-VN-HJ6">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="j5N-EZ-y4R">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="30" minimumInteritemSpacing="20" id="Rap-we-EQn">
                                     <size key="itemSize" width="150" height="150"/>
@@ -107,13 +108,84 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="tlN-7W-jq8"/>
                     <connections>
                         <outlet property="collectionView" destination="j5N-EZ-y4R" id="TWD-fD-FoD"/>
+                        <segue destination="zbm-lJ-UmW" kind="show" identifier="toMapView" action="showDetailViewController:sender:" id="6Lg-3O-cSJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="32.833583208395808"/>
+            <point key="canvasLocation" x="372" y="32.833583208395808"/>
+        </scene>
+        <!--Map View-->
+        <scene sceneID="YkV-Ge-hUb">
+            <objects>
+                <viewController id="zbm-lJ-UmW" customClass="MapView" customModule="SwiftGirls201804" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5lj-Ox-CVe"/>
+                        <viewControllerLayoutGuide type="bottom" id="3vr-iS-g94"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="On2-GT-8LF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bgo-CZ-X1n">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFC-J7-cpN">
+                                <rect key="frame" x="310" y="603" width="31" height="30"/>
+                                <state key="normal" title="定位"/>
+                                <connections>
+                                    <action selector="getUserLocation:" destination="zbm-lJ-UmW" eventType="touchUpInside" id="dKN-iv-rhl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gu2-i3-Hqy">
+                                <rect key="frame" x="34" y="603" width="89" height="30"/>
+                                <state key="normal" title="內建地圖App"/>
+                                <connections>
+                                    <action selector="openMapApp:" destination="zbm-lJ-UmW" eventType="touchUpInside" id="p7G-TX-H1z"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bgo-CZ-X1n" firstAttribute="leading" secondItem="On2-GT-8LF" secondAttribute="leading" id="2d5-QK-JQf"/>
+                            <constraint firstItem="bgo-CZ-X1n" firstAttribute="height" secondItem="On2-GT-8LF" secondAttribute="height" id="544-QS-urh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dFC-J7-cpN" secondAttribute="trailing" constant="18" id="QlI-Tb-cAJ"/>
+                            <constraint firstItem="Gu2-i3-Hqy" firstAttribute="leading" secondItem="On2-GT-8LF" secondAttribute="leadingMargin" constant="18" id="dMZ-Yf-rvK"/>
+                            <constraint firstItem="bgo-CZ-X1n" firstAttribute="width" secondItem="On2-GT-8LF" secondAttribute="width" id="e0I-KU-9Fu"/>
+                            <constraint firstItem="bgo-CZ-X1n" firstAttribute="bottom" secondItem="3vr-iS-g94" secondAttribute="top" id="lwz-2L-GHz"/>
+                            <constraint firstItem="3vr-iS-g94" firstAttribute="top" secondItem="dFC-J7-cpN" secondAttribute="bottom" constant="34" id="oiP-Us-Yg0"/>
+                            <constraint firstItem="3vr-iS-g94" firstAttribute="top" secondItem="Gu2-i3-Hqy" secondAttribute="bottom" constant="34" id="rki-VT-shb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Edd-fs-Btf"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="bgo-CZ-X1n" id="tfK-4W-E6V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E0L-MK-mhf" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1145" y="33"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KbO-LU-2vq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="73E-VN-HJ6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SYU-kf-Mzh">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Gcf-ww-8DU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2vw-XA-KN1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-343" y="33"/>
         </scene>
     </scenes>
 </document>
