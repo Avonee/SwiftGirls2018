@@ -89,9 +89,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMapView"{
-            let navigationController = segue.destination as! UINavigationController
-            let vc = navigationController.viewControllers.first as! MapView
-//            let vc = segue.destination as! MapView
+            let vc = segue.destination as! MapView
             vc.eqStationGet = self.eqStation
             print("push to MapView")
         }

@@ -69,8 +69,13 @@ class MapView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         }
 
         // 拿此地區觀測站所有資料
-        for i in 0...eqStationGet.count-1{
-        self.displayContent(with: eqStationGet[i])
+//        for i in 0...eqStationGet.count-1{
+//        self.displayContent(with: eqStationGet[i])
+//        }
+        
+        // 迴圈的另一種寫法
+        for eqStation in eqStationGet {
+            self.displayContent(with: eqStation)
         }
         
         self.displayContentCenter(with: eqStationGet[0])
@@ -86,6 +91,7 @@ class MapView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     func displayContent(with station : EqStation) {
         let stationAnnotation = AnnotationRed(title: "\(station.stationName)", subtitle: "\(station.stationIntensity)級", coordinate: CLLocationCoordinate2D(latitude: Double(station.stationLat), longitude: Double(station.stationLon)))
         mapView.addAnnotation(stationAnnotation)
+        print("個測站名稱是\(station.stationName)")
     }
     
     func displayContentCenter(with station : EqStation) {
