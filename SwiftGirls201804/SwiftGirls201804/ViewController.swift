@@ -14,11 +14,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //地震資料
     var earthquake: Earthquake = Earthquake()
-//    var earthquake: [String: Any] = [:]
     
     //分區震度
     var shakingArea: [ShakingArea] = []
-//    var shakingArea: [[String: Any]] = [[:]]
     
     //分區震度內各測站
     var eqStation: [EqStation] = []
@@ -39,12 +37,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 self.collectionView.reloadData()
             }
         }
-        print("earthqaukeno:\(earthquake.reportContent)...")
+        
 //        //Use FakeData.
-//        earthquake = FakeData.fakeEarthquake
-//        if let intensity = earthquake["intensity"] as? [String: Any], let shakingAreas = intensity["shakingArea"] as? [[String: Any]] {
-//            shakingArea = shakingAreas
+//        earthquake = FakeData.initFakeData(earthquake)
+//        if let shakingAreas = earthquake.intensityArray {
+//            self.shakingArea = shakingAreas
 //        }
+        print("earthqauke:\(earthquake.reportContent)...")
         
         //Set CollectionView Datasource and Delegate
         collectionView.dataSource = self
