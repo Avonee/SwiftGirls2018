@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 
 class MapView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-    
+
     @IBOutlet weak var mapView: MKMapView!
     
     // 拿到此地區的所以觀測站
@@ -34,7 +34,7 @@ class MapView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         
         mapView.delegate = self
 //        centerMap(coordinate: location1.coordinate)
-        
+    
         mapView.showsUserLocation = true
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -201,9 +201,7 @@ class MapView: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     // 以給定的經緯度為中心顯示該範圍內地圖
     func centerMap(coordinate: CLLocationCoordinate2D) {
-//        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005) // 越小越精確
-         let span = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0)
-//        let region = MKCoordinateRegionMake(coordinate, span)
+         let span = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0)// 越小越精確, 也可用0.005
         let region = MKCoordinateRegion(center:coordinate, span:span)
         mapView.setRegion(region, animated: true)
     }
