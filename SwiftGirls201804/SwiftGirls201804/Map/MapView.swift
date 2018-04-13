@@ -13,6 +13,9 @@ class MapView: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    // 拿到此地區的所以觀測站
+    var eqStationGet: [EqStation] = []
+    
     // 範例：台北火車站
     let location1 = CLLocation(latitude: 25.0477435, longitude: 121.5148509)
     // 範例：台北101/世貿站
@@ -34,6 +37,29 @@ class MapView: UIViewController, MKMapViewDelegate {
         // 標記自訂大頭針
         let myAnnotation = AnnotationBlue(title: "台北101/世貿站", subtitle: "捷運", coordinate: location2.coordinate)
         mapView.addAnnotation(myAnnotation)
+        
+        // 拿此地區觀測站所有資料
+        //        for i in 0...eqStationGet.count-1{
+        //        self.displayContent(with: eqStationGet[i])
+        //        }
+        
+        // 迴圈的另一種寫法
+        for eqStation in eqStationGet {
+            self.displayContent(with: eqStation)
+        }
+        
+        self.displayContentCenter(with: eqStationGet[0])
+    }
+    
+    // 各測站詳細資料
+    func displayContent(with station : EqStation) {
+        let stationAnnotation = AnnotationRed(title: "\(station.stationName)", subtitle: "\(station.stationIntensity)級", coordinate: CLLocationCoordinate2D(latitude: Double(station.stationLat), longitude: Double(station.stationLon)))
+        mapView.addAnnotation(stationAnnotation)
+        print("個測站名稱是\(station.stationName)")
+    }
+    
+    func displayContentCenter(with station : EqStation) {
+        centerMap(coordinate: CLLocationCoordinate2D(latitude: Double(station.stationLat), longitude: Double(station.stationLon)))
     }
 
     override func didReceiveMemoryWarning() {
