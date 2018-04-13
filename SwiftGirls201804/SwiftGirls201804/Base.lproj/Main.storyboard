@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D71-Zz-5KL">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -113,7 +113,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="32.833583208395808"/>
+            <point key="canvasLocation" x="-87" y="33"/>
+        </scene>
+        <!--Map View-->
+        <scene sceneID="9Tf-Hn-PfT">
+            <objects>
+                <viewController id="D71-Zz-5KL" customClass="MapView" customModule="SwiftGirls201804" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Ai-Lt-Hu2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="diI-hv-db5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Fk-Er-TBS">
+                                <rect key="frame" x="18" y="603" width="62" height="30"/>
+                                <state key="normal" title="內建地圖"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cch-SB-Yh6">
+                                <rect key="frame" x="326" y="603" width="31" height="30"/>
+                                <state key="normal" title="定位"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qvN-4d-8fC" firstAttribute="bottom" secondItem="cch-SB-Yh6" secondAttribute="bottom" constant="34" id="AoB-VT-csa"/>
+                            <constraint firstItem="diI-hv-db5" firstAttribute="width" secondItem="9Ai-Lt-Hu2" secondAttribute="width" id="LJj-Fe-jJH"/>
+                            <constraint firstItem="diI-hv-db5" firstAttribute="bottom" secondItem="qvN-4d-8fC" secondAttribute="bottom" id="LfH-34-IPY"/>
+                            <constraint firstItem="diI-hv-db5" firstAttribute="height" secondItem="9Ai-Lt-Hu2" secondAttribute="height" id="NgE-dC-8P0"/>
+                            <constraint firstItem="diI-hv-db5" firstAttribute="leading" secondItem="qvN-4d-8fC" secondAttribute="leading" id="TME-Gk-ekc"/>
+                            <constraint firstItem="qvN-4d-8fC" firstAttribute="bottom" secondItem="7Fk-Er-TBS" secondAttribute="bottom" constant="34" id="hSJ-s6-vvE"/>
+                            <constraint firstItem="7Fk-Er-TBS" firstAttribute="leading" secondItem="qvN-4d-8fC" secondAttribute="leading" constant="18" id="jG0-eu-R4i"/>
+                            <constraint firstItem="qvN-4d-8fC" firstAttribute="trailing" secondItem="cch-SB-Yh6" secondAttribute="trailing" constant="18" id="wDr-8f-ZO4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qvN-4d-8fC"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="diI-hv-db5" id="i56-wT-dyb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xh4-bv-Uj3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="710" y="33"/>
         </scene>
     </scenes>
 </document>

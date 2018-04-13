@@ -17,6 +17,8 @@
 		6DDDDC0E205CFFC300ED689F /* ShakingAreaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDDDC0D205CFFC300ED689F /* ShakingAreaCell.swift */; };
 		6DDDDC12205D0E5000ED689F /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDDDC11205D0E5000ED689F /* FakeData.swift */; };
 		6DDDDC14205D6CBA00ED689F /* EarthquakeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDDDC13205D6CBA00ED689F /* EarthquakeHeaderView.swift */; };
+		B56580B420807BE90062B7DB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56580B320807BE90062B7DB /* MapView.swift */; };
+		B56580B62080819B0062B7DB /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56580B52080819B0062B7DB /* CustomAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		6DDDDC0D205CFFC300ED689F /* ShakingAreaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakingAreaCell.swift; sourceTree = "<group>"; };
 		6DDDDC11205D0E5000ED689F /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
 		6DDDDC13205D6CBA00ED689F /* EarthquakeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeHeaderView.swift; sourceTree = "<group>"; };
+		B56580B320807BE90062B7DB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		B56580B52080819B0062B7DB /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		6D66F94220514FED00B2C5C5 /* SwiftGirls201804 */ = {
 			isa = PBXGroup;
 			children = (
+				B56580B7208083E60062B7DB /* Map */,
 				6D66F94320514FED00B2C5C5 /* AppDelegate.swift */,
 				6D66F94520514FED00B2C5C5 /* ViewController.swift */,
 				6D66F94720514FED00B2C5C5 /* Main.storyboard */,
@@ -77,6 +82,15 @@
 				6DDDDC13205D6CBA00ED689F /* EarthquakeHeaderView.swift */,
 			);
 			path = SwiftGirls201804;
+			sourceTree = "<group>";
+		};
+		B56580B7208083E60062B7DB /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				B56580B52080819B0062B7DB /* CustomAnnotation.swift */,
+				B56580B320807BE90062B7DB /* MapView.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +166,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D66F94620514FED00B2C5C5 /* ViewController.swift in Sources */,
+				B56580B420807BE90062B7DB /* MapView.swift in Sources */,
+				B56580B62080819B0062B7DB /* CustomAnnotation.swift in Sources */,
 				6DDDDC0E205CFFC300ED689F /* ShakingAreaCell.swift in Sources */,
 				6DDDDC12205D0E5000ED689F /* FakeData.swift in Sources */,
 				6DDDDC14205D6CBA00ED689F /* EarthquakeHeaderView.swift in Sources */,
